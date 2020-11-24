@@ -64,7 +64,8 @@ const Weather = ({ weather, day }: TWeatherProps): JSX.Element => {
           </div>
         </>
       )}
-      {+currentDate > +selectedDate && <p>passado</p>}
+      {+currentDate > +selectedDate && currentWeather && <p>passado</p>}
+      {!currentWeather && <p>Adicione uma cidade</p>}
     </div>
   ) : (
     <p>Indisponível</p>
