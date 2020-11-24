@@ -45,7 +45,8 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
   };
 
   useEffect(() => {
-    setCalendar(generateCalendar(currentMonth, currentYear));
+    const date2 = generateCalendar(currentMonth, currentYear);
+    setCalendar(date2);
   }, []);
 
   useEffect(() => {

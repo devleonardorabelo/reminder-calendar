@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
-import generateCalendar from './utils/generateCalendar';
+import React from 'react';
+import { CalendarProvider } from './contexts/calendar';
+
+import Home from './pages/Home';
 
 const App = (): JSX.Element => {
-  useEffect(() => {
-    console.log(generateCalendar(1, 2020));
-  }, []);
-  return <div>Hello World</div>;
+  return (
+    <CalendarProvider>
+      <Home />
+    </CalendarProvider>
+  );
 };
 
 export default App;

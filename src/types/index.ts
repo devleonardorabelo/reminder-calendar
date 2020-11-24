@@ -9,6 +9,7 @@ export type TReminder = {
   title: string;
   color: string;
   locality: string;
+  date: TDateFormat;
 };
 export type TComponentProps = {
   children: React.ReactNode;
