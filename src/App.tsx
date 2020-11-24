@@ -4,7 +4,7 @@ import { WeatherProvider } from './contexts/weather';
 
 import Home from './pages/Home';
 
-const App = (): JSX.Element => {
+const App: React.FC = () => {
   return (
     <WeatherProvider>
       <CalendarProvider>

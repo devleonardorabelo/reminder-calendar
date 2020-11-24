@@ -16,8 +16,10 @@ export const WeatherProvider: React.FC<TComponentProps> = ({
   const [currentLocation, setCurrentLocation] = useState<string>();
 
   const loadDayWeather = async (city: string, date: string) => {
-    const data = await getWeather(city, date);
-    setDayWeather(data);
+    if (city && date) {
+      const data = await getWeather(city, date);
+      setDayWeather(data);
+    }
   };
 
   const loadCurrentLocation = () => {

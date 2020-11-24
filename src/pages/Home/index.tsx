@@ -37,7 +37,6 @@ const App: React.FC = () => {
           <button type="button" onClick={() => addCurrentLocation(location)}>
             ok
           </button>
-          <p>{location}</p>
         </div>
         <div className="col-12">
           <Weather weather={dayWeather} day={selectedDay} />

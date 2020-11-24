@@ -23,50 +23,48 @@ const Weather = ({ weather, day }: TWeatherProps): JSX.Element => {
   }, [day]);
 
   const forecast = weather?.forecast?.forecastday[0];
+  const currentWeather = weather?.current;
 
   return currentDate && selectedDate ? (
     <div className="weatherRealTime row">
-      {+currentDate === +selectedDate && (
+      {+currentDate === +selectedDate && currentWeather && (
         <>
           <div className="col-3">
-            <img src={weather?.current.condition.icon} alt="" />
+            <img src={currentWeather.condition.icon} alt="" />
           </div>
           <div className="col-auto">
-            <span className="temp">{weather?.current.temp_c}</span>
+            <span className="temp">{currentWeather.temp_c}</span>
             <span className="maxMin">
-              <p>{weather?.current.condition.text}</p>
+              <p>{currentWeather.condition.text}</p>
             </span>
           </div>
         </>
       )}
-      {currentDate < selectedDate && forecast && (
+      {+currentDate < +selectedDate && forecast && (
         <>
           <div className="col-3">
-            <img
-              src={weather?.forecast?.forecastday[0].day.condition.icon}
-              alt=""
-            />
+            <img src={forecast.day.condition.icon} alt="" />
           </div>
           <div className="col-auto">
             <span className="maxMin">
               <p>
                 max:
-                {weather?.forecast?.forecastday[0].day.maxtemp_c}
+                {forecast.day.maxtemp_c}
               </p>
             </span>
             <span className="maxMin">
               <p>
                 min:
-                {weather?.forecast?.forecastday[0].day.mintemp_c}
+                {forecast.day.mintemp_c}
               </p>
             </span>
             <span className="maxMin">
-              <p>{weather?.forecast?.forecastday[0].day.condition.text}</p>
+              <p>{forecast.day.condition.text}</p>
             </span>
           </div>
         </>
       )}
-      {currentDate > selectedDate && <p>passado</p>}
+      {+currentDate > +selectedDate && <p>passado</p>}
     </div>
   ) : (
     <p>Indisponível</p>

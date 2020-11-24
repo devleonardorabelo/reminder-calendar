@@ -27,7 +27,7 @@ export type TCalendarContext = {
 export type TCalendarProps = {
   days: TDateFormat[];
   selectedDay: TDateFormat | undefined;
-  selectDay: (day: TDateFormat) => any;
+  selectDay: (day: TDateFormat) => void;
 };
 export type TForecast = {
   date: string;
