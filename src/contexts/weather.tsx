@@ -47,3 +47,5 @@ export const WeatherProvider: React.FC<TComponentProps> = ({
     </WeatherContext.Provider>
   );
 };
+
+export default WeatherContext;

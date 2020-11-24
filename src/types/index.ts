@@ -29,6 +29,17 @@ export type TCalendarProps = {
   selectedDay: TDateFormat | undefined;
   selectDay: (day: TDateFormat) => any;
 };
+export type TForecast = {
+  date: string;
+  day: {
+    maxtemp_c: number;
+    mintemp_c: number;
+    condition: {
+      text: string;
+      icon: string;
+    };
+  };
+};
 export type TWeather = {
   region: string;
   current: {
@@ -37,7 +48,9 @@ export type TWeather = {
       text: string;
       icon: string;
     };
-    humidity: number;
+  };
+  forecast?: {
+    forecastday: TForecast[];
   };
 };
 export type TWeatherContext = {
@@ -45,4 +58,8 @@ export type TWeatherContext = {
   currentLocation: string | undefined;
   loadDayWeather: (city: string, date: string) => void;
   addCurrentLocation: (Location: string) => void;
+};
+export type TWeatherProps = {
+  weather: TWeather | undefined;
+  day: TDateFormat | undefined;
 };
