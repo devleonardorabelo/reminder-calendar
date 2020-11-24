@@ -1,16 +1,26 @@
 import React from 'react';
-import { TDateFormat } from '../../types';
+import { TCalendarProps } from '../../types';
+import getMonthName from '../../utils/setNameMonth';
 import './styles.css';
 
-const Calendar = ({ days }: { days: TDateFormat[] }): JSX.Element => {
+const Calendar = ({
+  days,
+  selectedDay,
+  selectDay,
+}: TCalendarProps): JSX.Element => {
   const skipDays = [];
   for (let i = 0; i < days[0]?.dayOfWeek; i += 1) {
-    skipDays.push(<span />);
+    skipDays.push(<span key={Math.random()} />);
   }
 
   return (
     <div className="col-12 calendar">
-      <h2>Setembro, 2020</h2>
+      <h2>
+        {selectedDay &&
+          `${selectedDay.day} de ${getMonthName(selectedDay.month)} de ${
+            selectedDay.year
+          }`}
+      </h2>
       <div className="calendarDays">
         <div>Dom</div>
         <div>Seg</div>
@@ -21,7 +31,14 @@ const Calendar = ({ days }: { days: TDateFormat[] }): JSX.Element => {
         <div>Sáb</div>
         {skipDays.map((item) => item)}
         {days.map((item) => (
-          <a href="void">{item.day}</a>
+          <button
+            onClick={() => selectDay(item)}
+            type="button"
+            key={Math.random()}
+            className={item.day === selectedDay?.day ? 'active' : ''}
+          >
+            {item.day}
+          </button>
         ))}
       </div>
     </div>

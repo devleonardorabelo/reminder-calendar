@@ -8,13 +8,11 @@ import {
 } from '../types';
 import generateCalendar from '../utils/generateCalendar';
 
-const date = new Date();
-const currentMonth = date.getMonth();
-const currentYear = date.getFullYear();
-
 const CalendarContext = createContext<TCalendarContext>({
   calendar: [],
   reminders: [],
+  selectedDay: undefined,
+  selectDay: () => null,
   navigateBetweenDates: () => null,
   addReminder: () => null,
   editReminder: () => null,
@@ -26,6 +24,7 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
 }: TComponentProps) => {
   const [reminders, setReminders] = useState<TReminder[]>([]);
   const [calendar, setCalendar] = useState<TDateFormat[]>([]);
+  const [selectedDay, setSelectedDay] = useState<TDateFormat>();
 
   const navigateBetweenDates = (month: number, year: number) =>
     setCalendar(generateCalendar(month, year));
@@ -44,10 +43,26 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
     setReminders([...reminders]);
   };
 
+  const selectDay = (day: TDateFormat) => setSelectedDay(day);
+
+  const date = new Date();
+  const currentDay = date.getDate();
+  const currentMonth = date.getMonth();
+  const currentYear = date.getFullYear();
+  const currentDayOfWeek = date.getDay();
+
   useEffect(() => {
-    const date2 = generateCalendar(currentMonth, currentYear);
-    setCalendar(date2);
-  }, []);
+    setSelectedDay({
+      day: currentDay,
+      month: currentMonth,
+      year: currentYear,
+      dayOfWeek: currentDayOfWeek,
+    });
+  }, [currentDay, currentDayOfWeek, currentMonth, currentYear]);
+
+  useEffect(() => {
+    setCalendar(generateCalendar(currentMonth, currentYear));
+  }, [currentMonth, currentYear]);
 
   useEffect(() => {
     const data = localStorage.getItem('reminders');
@@ -63,6 +78,8 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
       value={{
         reminders,
         calendar,
+        selectedDay,
+        selectDay,
         navigateBetweenDates,
         addReminder,
         editReminder,

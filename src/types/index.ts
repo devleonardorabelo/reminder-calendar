@@ -17,8 +17,15 @@ export type TComponentProps = {
 export type TCalendarContext = {
   calendar: TDateFormat[];
   reminders: TReminder[];
+  selectedDay: TDateFormat | undefined;
+  selectDay: (day: TDateFormat) => void;
   navigateBetweenDates: (month: number, year: number) => void;
   addReminder: (item: TReminder) => void;
   editReminder: (item: TReminder) => void;
   removeReminder: (item: TReminder) => void;
+};
+export type TCalendarProps = {
+  days: TDateFormat[];
+  selectedDay: TDateFormat | undefined;
+  selectDay: (day: TDateFormat) => any;
 };
