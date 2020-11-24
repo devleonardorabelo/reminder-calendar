@@ -29,3 +29,14 @@ export type TCalendarProps = {
   selectedDay: TDateFormat | undefined;
   selectDay: (day: TDateFormat) => any;
 };
+export type TWeatherResponse = {
+  region: string;
+  current: {
+    temp_c: number;
+    condition: {
+      text: string;
+      icon: string;
+    };
+    humidity: number;
+  };
+};

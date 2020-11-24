@@ -25,6 +25,7 @@
       "prettier"
   ],
   "rules": {
+    "camelcase": "off",
     "no-use-before-define":"off",
     "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
     "react/jsx-props-no-spreading": "off",

@@ -4,6 +4,10 @@ import App from './App';
 
 import './styles.css';
 
+import { loadEnv } from './config/env';
+
+loadEnv();
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
