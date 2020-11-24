@@ -29,7 +29,7 @@ export type TCalendarProps = {
   selectedDay: TDateFormat | undefined;
   selectDay: (day: TDateFormat) => any;
 };
-export type TWeatherResponse = {
+export type TWeather = {
   region: string;
   current: {
     temp_c: number;
@@ -39,4 +39,10 @@ export type TWeatherResponse = {
     };
     humidity: number;
   };
+};
+export type TWeatherContext = {
+  dayWeather: TWeather | undefined;
+  currentLocation: string | undefined;
+  loadDayWeather: (city: string, date: string) => void;
+  addCurrentLocation: (Location: string) => void;
 };

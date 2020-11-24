@@ -1,13 +1,16 @@
 import React from 'react';
 import { CalendarProvider } from './contexts/calendar';
+import { WeatherProvider } from './contexts/weather';
 
 import Home from './pages/Home';
 
 const App = (): JSX.Element => {
   return (
-    <CalendarProvider>
-      <Home />
-    </CalendarProvider>
+    <WeatherProvider>
+      <CalendarProvider>
+        <Home />
+      </CalendarProvider>
+    </WeatherProvider>
   );
 };
 
