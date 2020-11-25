@@ -68,7 +68,6 @@ export type TWeatherProps = {
 };
 export type TButton = {
   onClick: () => void;
-  icon?: string;
-  title?: string;
+  children?: JSX.Element;
   disabled?: boolean;
 };

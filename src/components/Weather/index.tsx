@@ -22,6 +22,8 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
     setSelectedDate(selected);
   }, [day]);
 
+  localStorage.clear();
+
   const forecast = weather?.forecast?.forecastday[0];
   const currentWeather = weather?.current;
 
@@ -62,9 +64,9 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
           <span className="maxMin">Previsão Indisponível</span>
         </div>
       )}
-      {+currentDate < +selectedDate && !forecast && (
+      {!currentWeather && (
         <div className="available align-center">
-          <span className="maxMin">Qual sua cidade?</span>
+          <span className="maxMin">Cidade não encontrada</span>
         </div>
       )}
     </div>

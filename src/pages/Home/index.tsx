@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { FormEvent, useContext, useEffect, useState } from 'react';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import CalendarContext from '../../contexts/calendar';
 import WeatherContext from '../../contexts/weather';
 
@@ -57,9 +58,13 @@ const App: React.FC = () => {
             selectedDay={selectedDay}
             selectDay={selectDay}
           />
-          <div className="space-between">
-            <CircularButton onClick={() => navigateBetweenDates(-1)} />
-            <CircularButton onClick={() => navigateBetweenDates(1)} />
+          <div className="space-between-buttons">
+            <CircularButton onClick={() => navigateBetweenDates(-1)}>
+              <FiChevronLeft size={16} color="#FFFFFF" />
+            </CircularButton>
+            <CircularButton onClick={() => navigateBetweenDates(1)}>
+              <FiChevronRight size={16} color="#FFFFFF" />
+            </CircularButton>
           </div>
         </div>
       </div>

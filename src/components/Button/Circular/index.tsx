@@ -2,9 +2,9 @@ import React from 'react';
 import { TButton } from '../../../types';
 import './styles.css';
 
-const Circular = ({ onClick, icon }: TButton): JSX.Element => (
+const Circular = ({ onClick, children }: TButton): JSX.Element => (
   <button type="button" className="circularButton" onClick={onClick}>
-    <p>{icon}</p>
+    {children}
   </button>
 );
 
