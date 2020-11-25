@@ -80,7 +80,6 @@ const Modal = ({
     if (hour.length === 5 && city.length >= 3 && title.length > 5)
       setDone(true);
     else setDone(false);
-    console.log(hour.length === 5 && city.length >= 3 && title.length > 5);
   }, [hour, city, title]);
 
   return (

@@ -5,6 +5,7 @@ import {
   TReminder,
   TReminderContext,
 } from '../types';
+import sortByHour from '../utils/sortByHour';
 
 const ReminderContext = createContext<TReminderContext>({
   reminders: [],
@@ -49,7 +50,7 @@ export const ReminderProvider: React.FC<TComponentProps> = ({
       }
       return null;
     });
-    setReminderOfDay(remindersPerDay);
+    setReminderOfDay(sortByHour(remindersPerDay));
   };
 
   useEffect(() => {
