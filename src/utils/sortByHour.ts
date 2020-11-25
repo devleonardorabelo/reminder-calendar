@@ -1,6 +1,6 @@
 import { TReminder } from '../types';
 
-function sortByHour(reminders: TReminder[]) {
+function sortByHour(reminders: TReminder[]): TReminder[] {
   reminders.sort((a, b) => {
     const d = new Date();
     const hour1 = a.hour.split(':');
