@@ -111,6 +111,14 @@
 .dashboard .calendar button.yellow:after {
   background-color: #ECCA00 ;
 }
+.dashboard .calendar .calendarFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+}
+.dashboard .calendar .calendarFooter span {
+  font-size: 11pt;
+}
 
 @media (max-width: 768px) {
   .dashboard h1 {
@@ -118,5 +126,8 @@
   }
   .dashboard div[class*="col"] {
     width: 100%;
+  }
+  .dashboard .space-between {
+    justify-content: flex-end;
   }
 }

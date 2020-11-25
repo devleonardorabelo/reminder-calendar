@@ -23,17 +23,20 @@ const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
     <>
       <div className="dashboard">
         <div className="space-between">
-          <h1>
-            {selectedDay &&
-              `${selectedDay.day} de ${getMonthName(selectedDay.month)} de ${
-                selectedDay.year
-              }`}
-          </h1>
+          <div>
+            <h1>
+              {selectedDay &&
+                `${selectedDay.day} de ${getMonthName(selectedDay.month)} de ${
+                  selectedDay.year
+                }`}
+            </h1>
+          </div>
           <CircularButton
             onClick={() => {
               setSelectedReminder(undefined);
               setShowModal(true);
             }}
+            disabled={remindersOfDay.length >= 8}
           >
             <FiPlus size={16} color="#FFFFFF" />
           </CircularButton>
@@ -67,6 +70,12 @@ const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
                 </button>
               );
             })}
+            <div className="calendarFooter">
+              <span>
+                Lembretes restantes:
+                <strong>{`  ${8 - remindersOfDay.length}`}</strong>
+              </span>
+            </div>
           </div>
         </div>
       </div>
