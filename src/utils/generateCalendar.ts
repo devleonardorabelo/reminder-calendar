@@ -11,7 +11,7 @@ function generateCalendar(month: number, year: number): TDateFormat[] {
 
   const days = [];
 
-  for (let i = iMonthDate.getDate(); i < fMonthDate.getDate(); i += 1) {
+  for (let i = iMonthDate.getDate(); i < fMonthDate.getDate() + 1; i += 1) {
     days.push({
       day: i,
       month: iMonthDate.getMonth(),

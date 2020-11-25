@@ -15,6 +15,9 @@ h1 {
   margin: 0px;
   padding: 0px;
 }
+h1, h2, h3, h4 {
+  color: rgba(0,0,0,0.8);
+}
 
 .container {
   display: block;
@@ -33,9 +36,11 @@ h1 {
   height: 100%;
 }
 
-.col {
-  flex: 1;
-  height: 100%;
+.space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 16px
 }
 
 *[class*="col"] {
@@ -56,6 +61,22 @@ h1 {
 
 .col-11 {
   width: 91.66666%;
+}
+
+.leftNav {
+  background: #ECE9FF;
+}
+
+.cityInput {
+  background: rgba(255,255,255,0.4);
+  border: 0px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  font-weight: 200;
+  font-family: 'Roboto';
 }
 
 @media (max-width: 768px) {

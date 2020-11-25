@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import CalendarContext from '../../contexts/calendar';
 import WeatherContext from '../../contexts/weather';
 
-import { Calendar, Weather } from '../../components';
+import { Calendar, CircularButton, Weather } from '../../components';
 
 const App: React.FC = () => {
   const [location, setLocation] = useState<string>('');
@@ -19,6 +19,11 @@ const App: React.FC = () => {
     loadingWeather,
   } = useContext(WeatherContext);
 
+  const changeLocation = (e: FormEvent) => {
+    e.preventDefault();
+    addCurrentLocation(location);
+  };
+
   useEffect(() => {
     if (currentLocation && selectedDay) {
       const date = `${selectedDay?.year}-${selectedDay?.month + 1}-${
@@ -32,14 +37,14 @@ const App: React.FC = () => {
     <div className="container row">
       <div className="col-3 leftNav">
         <div className="col-12">
-          <input
-            type="text"
-            defaultValue={currentLocation}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-          <button type="button" onClick={() => addCurrentLocation(location)}>
-            ok
-          </button>
+          <form onSubmit={changeLocation}>
+            <input
+              className="cityInput"
+              type="text"
+              defaultValue={currentLocation}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </form>
         </div>
         <div className="col-12">
           <Weather
@@ -52,22 +57,10 @@ const App: React.FC = () => {
             selectedDay={selectedDay}
             selectDay={selectDay}
           />
-          <button
-            type="button"
-            onClick={() => {
-              navigateBetweenDates(-1);
-            }}
-          >
-            -
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              navigateBetweenDates(1);
-            }}
-          >
-            +
-          </button>
+          <div className="space-between">
+            <CircularButton onClick={() => navigateBetweenDates(-1)} />
+            <CircularButton onClick={() => navigateBetweenDates(1)} />
+          </div>
         </div>
       </div>
       <div className="col" />

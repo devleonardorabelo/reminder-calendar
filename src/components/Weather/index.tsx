@@ -27,53 +27,46 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
 
   if (loading)
     return (
-      <div className="weatherRealTime row">
-        <p>carregando</p>
+      <div className="weather">
+        <div className="available align-center">
+          <img src="./loading.svg" alt="" />
+        </div>
       </div>
     );
 
   return currentDate && selectedDate ? (
-    <div className="weatherRealTime row">
+    <div className="weather">
       {+currentDate === +selectedDate && currentWeather && (
-        <>
-          <div className="col-3">
-            <img src={currentWeather.condition.icon} alt="" />
-          </div>
-          <div className="col-auto">
-            <span className="temp">{currentWeather.temp_c}</span>
-            <span className="maxMin">
-              <p>{currentWeather.condition.text}</p>
-            </span>
-          </div>
-        </>
+        <div className="available">
+          <img src={currentWeather.condition.icon} alt="" />
+          <div className="temp">{`${currentWeather.temp_c}°C`}</div>
+          <span className="text">{currentWeather.condition.text}</span>
+        </div>
       )}
       {+currentDate < +selectedDate && forecast && (
-        <>
-          <div className="col-3">
-            <img src={forecast.day.condition.icon} alt="" />
+        <div className="available">
+          <img src={forecast.day.condition.icon} alt="" />
+          <div className="maxMin">
+            {`${forecast.day.maxtemp_c} / ${forecast.day.mintemp_c}°C`}
           </div>
-          <div className="col-auto">
-            <span className="maxMin">
-              <p>
-                max:
-                {forecast.day.maxtemp_c}
-              </p>
-            </span>
-            <span className="maxMin">
-              <p>
-                min:
-                {forecast.day.mintemp_c}
-              </p>
-            </span>
-            <span className="maxMin">
-              <p>{forecast.day.condition.text}</p>
-            </span>
-          </div>
-        </>
+          <span className="text">{forecast.day.condition.text}</span>
+        </div>
       )}
-      {+currentDate > +selectedDate && currentWeather && <p>passado</p>}
-      {+currentDate < +selectedDate && !forecast && <p>futuro</p>}
-      {!currentWeather && <p>Adicione uma cidade</p>}
+      {+currentDate > +selectedDate && currentWeather && (
+        <div className="unavailable align-center">
+          <span className="maxMin">Esse dia já passou</span>
+        </div>
+      )}
+      {+currentDate < +selectedDate && !forecast && (
+        <div className="unavailable align-center">
+          <span className="maxMin">Previsão Indisponível</span>
+        </div>
+      )}
+      {+currentDate < +selectedDate && !forecast && (
+        <div className="available align-center">
+          <span className="maxMin">Qual sua cidade?</span>
+        </div>
+      )}
     </div>
   ) : (
     <p>Indisponível</p>

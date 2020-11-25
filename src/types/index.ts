@@ -66,3 +66,9 @@ export type TWeatherProps = {
   day: TDateFormat | undefined;
   loading: boolean;
 };
+export type TButton = {
+  onClick: () => void;
+  icon?: string;
+  title?: string;
+  disabled?: boolean;
+};

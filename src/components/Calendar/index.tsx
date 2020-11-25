@@ -15,12 +15,12 @@ const Calendar = ({
 
   return (
     <div className="col-12 calendar">
-      <h2>
+      <h3>
         {selectedDay &&
           `${selectedDay.day} de ${getMonthName(selectedDay.month)} de ${
             selectedDay.year
           }`}
-      </h2>
+      </h3>
       <div className="calendarDays">
         <div>Dom</div>
         <div>Seg</div>
