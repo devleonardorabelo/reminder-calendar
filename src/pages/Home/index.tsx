@@ -40,6 +40,7 @@ const App: React.FC = () => {
         <div className="col-12">
           <form onSubmit={changeLocation}>
             <input
+              placeholder="Qual sua cidade?"
               className="cityInput"
               type="text"
               defaultValue={currentLocation}

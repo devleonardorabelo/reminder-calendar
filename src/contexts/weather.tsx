@@ -26,12 +26,12 @@ export const WeatherProvider: React.FC<TComponentProps> = ({
   };
 
   const loadCurrentLocation = () => {
-    const location = localStorage.getItem('reminderCalendarLocation');
+    const location = localStorage.getItem('currentLocation');
     if (location) setCurrentLocation(location);
   };
 
   const addCurrentLocation = (location: string) => {
-    localStorage.setItem('reminderCalendarLocation', location);
+    localStorage.setItem('currentLocation', location);
     setCurrentLocation(location);
   };
 

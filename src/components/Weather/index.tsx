@@ -5,6 +5,7 @@ import './styles.css';
 const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
   const [currentDate, setCurrentDate] = useState<Date>();
   const [selectedDate, setSelectedDate] = useState<Date>();
+  const [location, setLocation] = useState<string>();
 
   useEffect(() => {
     const date = new Date();
@@ -22,8 +23,25 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
     setSelectedDate(selected);
   }, [day]);
 
+  localStorage.clear();
+
+  useEffect(() => {
+    const current = localStorage.getItem('currentLocation');
+    if (current) setLocation(current);
+  }, [day, loading, weather]);
+
   const forecast = weather?.forecast?.forecastday[0];
   const currentWeather = weather?.current;
+
+  if (!location && !weather) {
+    return (
+      <div className="weather">
+        <div className="available align-center">
+          <span className="maxMin">Adicione uma cidade</span>
+        </div>
+      </div>
+    );
+  }
 
   if (loading)
     return (
@@ -57,7 +75,7 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
           <span className="maxMin">Esse dia já passou</span>
         </div>
       )}
-      {+currentDate < +selectedDate && !forecast && (
+      {+currentDate < +selectedDate && !forecast && currentWeather && (
         <div className="unavailable align-center">
           <span className="maxMin">Previsão Indisponível</span>
         </div>
