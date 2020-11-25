@@ -18,8 +18,9 @@ export type TCalendarContext = {
   calendar: TDateFormat[];
   reminders: TReminder[];
   selectedDay: TDateFormat | undefined;
+  createCalendar: (month: number, year: number) => void;
   selectDay: (day: TDateFormat) => void;
-  navigateBetweenDates: (month: number, year: number) => void;
+  navigateBetweenDates: (month: number) => void;
   addReminder: (item: TReminder) => void;
   editReminder: (item: TReminder) => void;
   removeReminder: (item: TReminder) => void;
@@ -58,8 +59,10 @@ export type TWeatherContext = {
   currentLocation: string | undefined;
   loadDayWeather: (city: string, date: string) => void;
   addCurrentLocation: (Location: string) => void;
+  loadingWeather: boolean;
 };
 export type TWeatherProps = {
   weather: TWeather | undefined;
   day: TDateFormat | undefined;
+  loading: boolean;
 };

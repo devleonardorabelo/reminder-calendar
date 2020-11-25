@@ -7,6 +7,7 @@ const WeatherContext = createContext<TWeatherContext>({
   loadDayWeather: () => null,
   currentLocation: '',
   addCurrentLocation: () => null,
+  loadingWeather: true,
 });
 
 export const WeatherProvider: React.FC<TComponentProps> = ({
@@ -14,12 +15,14 @@ export const WeatherProvider: React.FC<TComponentProps> = ({
 }: TComponentProps) => {
   const [dayWeather, setDayWeather] = useState<TWeather>();
   const [currentLocation, setCurrentLocation] = useState<string>();
+  const [loadingWeather, setLoadingWeather] = useState<boolean>(true);
 
   const loadDayWeather = async (city: string, date: string) => {
+    setLoadingWeather(true);
     const data = await getWeather(city, date);
     if (data) setDayWeather(data);
     else setDayWeather(undefined);
-    console.log(dayWeather);
+    setLoadingWeather(false);
   };
 
   const loadCurrentLocation = () => {
@@ -43,6 +46,7 @@ export const WeatherProvider: React.FC<TComponentProps> = ({
         loadDayWeather,
         currentLocation,
         addCurrentLocation,
+        loadingWeather,
       }}
     >
       {children}

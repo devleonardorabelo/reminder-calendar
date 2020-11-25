@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useMemo } from 'react';
 
 import {
   TCalendarContext,
@@ -12,6 +12,7 @@ const CalendarContext = createContext<TCalendarContext>({
   calendar: [],
   reminders: [],
   selectedDay: undefined,
+  createCalendar: () => null,
   selectDay: () => null,
   navigateBetweenDates: () => null,
   addReminder: () => null,
@@ -26,8 +27,21 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
   const [calendar, setCalendar] = useState<TDateFormat[]>([]);
   const [selectedDay, setSelectedDay] = useState<TDateFormat>();
 
-  const navigateBetweenDates = (month: number, year: number) =>
+  const date = useMemo(() => new Date(), []);
+
+  const createCalendar = (month: number, year: number) =>
     setCalendar(generateCalendar(month, year));
+
+  const navigateBetweenDates = (month: number) => {
+    date.setMonth(date.getMonth() + month);
+    setCalendar(generateCalendar(date.getMonth(), date.getFullYear()));
+    setSelectedDay({
+      day: 1,
+      month: date.getMonth(),
+      year: date.getFullYear(),
+      dayOfWeek: date.getDay(),
+    });
+  };
 
   const addReminder = (item: TReminder) => setReminders([...reminders, item]);
 
@@ -45,11 +59,10 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
 
   const selectDay = (day: TDateFormat) => setSelectedDay(day);
 
-  const date = new Date();
   const currentDay = date.getDate();
+  const currentDayOfWeek = date.getDay();
   const currentMonth = date.getMonth();
   const currentYear = date.getFullYear();
-  const currentDayOfWeek = date.getDay();
 
   useEffect(() => {
     setSelectedDay({
@@ -58,10 +71,11 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
       year: currentYear,
       dayOfWeek: currentDayOfWeek,
     });
-  }, [currentDay, currentDayOfWeek, currentMonth, currentYear]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    setCalendar(generateCalendar(currentMonth, currentYear));
+    createCalendar(currentMonth, currentYear);
   }, [currentMonth, currentYear]);
 
   useEffect(() => {
@@ -79,6 +93,7 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
         reminders,
         calendar,
         selectedDay,
+        createCalendar,
         selectDay,
         navigateBetweenDates,
         addReminder,

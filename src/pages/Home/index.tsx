@@ -8,12 +8,15 @@ import { Calendar, Weather } from '../../components';
 const App: React.FC = () => {
   const [location, setLocation] = useState<string>('');
 
-  const { calendar, selectedDay, selectDay } = useContext(CalendarContext);
+  const { calendar, selectedDay, selectDay, navigateBetweenDates } = useContext(
+    CalendarContext,
+  );
   const {
     addCurrentLocation,
     dayWeather,
     currentLocation,
     loadDayWeather,
+    loadingWeather,
   } = useContext(WeatherContext);
 
   useEffect(() => {
@@ -39,12 +42,32 @@ const App: React.FC = () => {
           </button>
         </div>
         <div className="col-12">
-          <Weather weather={dayWeather} day={selectedDay} />
+          <Weather
+            weather={dayWeather}
+            day={selectedDay}
+            loading={loadingWeather}
+          />
           <Calendar
             days={calendar}
             selectedDay={selectedDay}
             selectDay={selectDay}
           />
+          <button
+            type="button"
+            onClick={() => {
+              navigateBetweenDates(-1);
+            }}
+          >
+            -
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              navigateBetweenDates(1);
+            }}
+          >
+            +
+          </button>
         </div>
       </div>
       <div className="col" />

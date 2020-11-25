@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { TWeatherProps } from '../../types';
 import './styles.css';
 
-const Weather = ({ weather, day }: TWeatherProps): JSX.Element => {
+const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
   const [currentDate, setCurrentDate] = useState<Date>();
   const [selectedDate, setSelectedDate] = useState<Date>();
 
@@ -24,6 +24,13 @@ const Weather = ({ weather, day }: TWeatherProps): JSX.Element => {
 
   const forecast = weather?.forecast?.forecastday[0];
   const currentWeather = weather?.current;
+
+  if (loading)
+    return (
+      <div className="weatherRealTime row">
+        <p>carregando</p>
+      </div>
+    );
 
   return currentDate && selectedDate ? (
     <div className="weatherRealTime row">
@@ -65,6 +72,7 @@ const Weather = ({ weather, day }: TWeatherProps): JSX.Element => {
         </>
       )}
       {+currentDate > +selectedDate && currentWeather && <p>passado</p>}
+      {+currentDate < +selectedDate && !forecast && <p>futuro</p>}
       {!currentWeather && <p>Adicione uma cidade</p>}
     </div>
   ) : (
