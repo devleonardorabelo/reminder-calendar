@@ -1,0 +1,96 @@
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.dashboard h1 {
+  padding: 25px;
+  width: 100%;
+}
+.dashboard .calendar {
+  display: flex;
+  width: 100%;
+  color: #777;
+  font-size: 10pt;
+  flex-flow: row wrap;
+  flex-direction: row;
+}
+.dashboard .calendar h3 {
+  margin: 0px;
+  padding: 0px;
+  color: black;
+}
+.dashboard .calendar>div {
+  padding: 10px;
+  border-bottom: 1px solid #EEE;
+}
+.dashboard .calendar button {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+}
+.dashboard .calendar button span {
+  font-weight: normal;
+}
+.dashboard .calendar button:after {
+  content:"";
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  display: block;
+  margin-top: 20px;
+}
+
+.dashboard .calendar .tempPreview {
+  text-align: right;
+  font-size: 14pt;
+}
+.dashboard .calendar .maxMinTemp {
+  display: block;
+  text-align: right;
+  font-size: 10pt;
+}
+.dashboard .calendar .image {
+  overflow: hidden;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  float: right;
+}
+
+.dashboard .calendar button.red {
+  color: #FF0000;
+  background: rgba(255, 232, 225, 1);
+}
+
+.dashboard .calendar button.red:after {
+  background-color: red;
+}
+
+.dashboard .calendar a.blue {
+  color: #0286FF;
+  background-color: rgba(225, 235, 255, 1);
+}
+
+.dashboard .calendar a.blue:after {
+  background-color:  #0286FF;
+}
+
+@media (max-width: 768px) {
+  .dashboard h1 {
+    display: none;
+  }
+  .dashboard div[class*="col"] {
+    width: 100%;
+  }
+}

@@ -47,6 +47,10 @@ h1, h2, h3, h4 {
   padding: 10px;
 }
 
+.col {
+  flex-grow: 1;
+}
+
 .col-3 {
   width: 25%;
 }

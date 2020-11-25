@@ -38,6 +38,9 @@ export type TReminderContext = {
   editReminder: (item: TReminder) => void;
   removeReminder: (item: TReminder) => void;
 };
+export type TReminderProps = {
+  selectedDay: TDateFormat | undefined;
+};
 export type TForecast = {
   date: string;
   day: {

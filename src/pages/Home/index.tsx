@@ -4,7 +4,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import CalendarContext from '../../contexts/calendar';
 import WeatherContext from '../../contexts/weather';
 
-import { Calendar, CircularButton, Weather } from '../../components';
+import { Calendar, CircularButton, Dashboard, Weather } from '../../components';
 
 const App: React.FC = () => {
   const [location, setLocation] = useState<string>('');
@@ -69,7 +69,9 @@ const App: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="col" />
+      <div className="col">
+        <Dashboard selectedDay={selectedDay} />
+      </div>
     </div>
   );
 };
