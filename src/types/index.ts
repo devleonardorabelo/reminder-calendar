@@ -1,3 +1,9 @@
+export type TButton = {
+  onClick: () => void;
+  children?: JSX.Element;
+  disabled?: boolean;
+};
+
 export type TDateFormat = {
   day: number;
   month: number;
@@ -16,19 +22,21 @@ export type TComponentProps = {
 };
 export type TCalendarContext = {
   calendar: TDateFormat[];
-  reminders: TReminder[];
   selectedDay: TDateFormat | undefined;
   createCalendar: (month: number, year: number) => void;
   selectDay: (day: TDateFormat) => void;
   navigateBetweenDates: (month: number) => void;
-  addReminder: (item: TReminder) => void;
-  editReminder: (item: TReminder) => void;
-  removeReminder: (item: TReminder) => void;
 };
 export type TCalendarProps = {
   days: TDateFormat[];
   selectedDay: TDateFormat | undefined;
   selectDay: (day: TDateFormat) => void;
+};
+export type TReminderContext = {
+  reminders: TReminder[];
+  addReminder: (item: TReminder) => void;
+  editReminder: (item: TReminder) => void;
+  removeReminder: (item: TReminder) => void;
 };
 export type TForecast = {
   date: string;
@@ -65,9 +73,4 @@ export type TWeatherProps = {
   weather: TWeather | undefined;
   day: TDateFormat | undefined;
   loading: boolean;
-};
-export type TButton = {
-  onClick: () => void;
-  children?: JSX.Element;
-  disabled?: boolean;
 };

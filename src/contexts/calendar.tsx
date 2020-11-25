@@ -1,29 +1,19 @@
 import React, { useState, createContext, useEffect, useMemo } from 'react';
 
-import {
-  TCalendarContext,
-  TComponentProps,
-  TDateFormat,
-  TReminder,
-} from '../types';
+import { TCalendarContext, TComponentProps, TDateFormat } from '../types';
 import generateCalendar from '../utils/generateCalendar';
 
 const CalendarContext = createContext<TCalendarContext>({
   calendar: [],
-  reminders: [],
   selectedDay: undefined,
   createCalendar: () => null,
   selectDay: () => null,
   navigateBetweenDates: () => null,
-  addReminder: () => null,
-  editReminder: () => null,
-  removeReminder: () => null,
 });
 
 export const CalendarProvider: React.FC<TComponentProps> = ({
   children,
 }: TComponentProps) => {
-  const [reminders, setReminders] = useState<TReminder[]>([]);
   const [calendar, setCalendar] = useState<TDateFormat[]>([]);
   const [selectedDay, setSelectedDay] = useState<TDateFormat>();
 
@@ -43,20 +33,6 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
     });
   };
 
-  const addReminder = (item: TReminder) => setReminders([...reminders, item]);
-
-  const editReminder = (item: TReminder) => {
-    const index = reminders.findIndex((each) => each.id === item.id);
-    reminders[index].title = item.title;
-    reminders[index].color = item.color;
-  };
-
-  const removeReminder = (item: TReminder) => {
-    const index = reminders.findIndex((each) => each.id === item.id);
-    reminders.splice(index, 1);
-    setReminders([...reminders]);
-  };
-
   const selectDay = (day: TDateFormat) => setSelectedDay(day);
 
   const currentDay = date.getDate();
@@ -71,34 +47,20 @@ export const CalendarProvider: React.FC<TComponentProps> = ({
       year: currentYear,
       dayOfWeek: currentDayOfWeek,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     createCalendar(currentMonth, currentYear);
   }, [currentMonth, currentYear]);
 
-  useEffect(() => {
-    const data = localStorage.getItem('reminders');
-    if (data) setReminders(JSON.parse(data));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('reminders', JSON.stringify(reminders));
-  }, [reminders]);
-
   return (
     <CalendarContext.Provider
       value={{
-        reminders,
         calendar,
         selectedDay,
         createCalendar,
         selectDay,
         navigateBetweenDates,
-        addReminder,
-        editReminder,
-        removeReminder,
       }}
     >
       {children}
