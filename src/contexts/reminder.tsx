@@ -40,15 +40,14 @@ export const ReminderProvider: React.FC<TComponentProps> = ({
 
   const loadRemindersOfDay = (day: TDateFormat) => {
     const remindersPerDay: TReminder[] = [];
-    reminders.map((reminder) => {
+    reminders.forEach((each) => {
       if (
-        reminder.date.day === day.day &&
-        reminder.date.month === day.month &&
-        reminder.date.year === day.year
+        each.date.day === day.day &&
+        each.date.month === day.month &&
+        each.date.year === day.year
       ) {
-        remindersPerDay.push(reminder);
+        remindersPerDay.push(each);
       }
-      return null;
     });
     setReminderOfDay(sortByHour(remindersPerDay));
   };
