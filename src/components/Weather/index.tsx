@@ -23,8 +23,6 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
     setSelectedDate(selected);
   }, [day]);
 
-  localStorage.clear();
-
   useEffect(() => {
     const current = localStorage.getItem('currentLocation');
     if (current) setLocation(current);

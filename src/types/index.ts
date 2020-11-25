@@ -2,6 +2,8 @@ export type TButton = {
   onClick: () => void;
   children?: JSX.Element;
   disabled?: boolean;
+  title?: string;
+  transparent?: boolean;
 };
 
 export type TDateFormat = {
@@ -11,11 +13,12 @@ export type TDateFormat = {
   dayOfWeek: number;
 };
 export type TReminder = {
-  id: string;
+  id: number;
   title: string;
   color: string;
-  locality: string;
+  city: string;
   date: TDateFormat;
+  hour: string;
 };
 export type TComponentProps = {
   children: React.ReactNode;
@@ -34,9 +37,11 @@ export type TCalendarProps = {
 };
 export type TReminderContext = {
   reminders: TReminder[];
+  remindersOfDay: TReminder[];
   addReminder: (item: TReminder) => void;
   editReminder: (item: TReminder) => void;
   removeReminder: (item: TReminder) => void;
+  loadRemindersOfDay: (day: TDateFormat) => void;
 };
 export type TReminderProps = {
   selectedDay: TDateFormat | undefined;
@@ -76,4 +81,10 @@ export type TWeatherProps = {
   weather: TWeather | undefined;
   day: TDateFormat | undefined;
   loading: boolean;
+};
+export type TModalProps = {
+  reminder?: TReminder;
+  show: boolean;
+  currentDay?: TDateFormat | undefined;
+  closeAction: () => void;
 };

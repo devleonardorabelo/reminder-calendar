@@ -4,9 +4,15 @@
   flex-flow: row wrap;
   justify-content: flex-start;
 }
-.dashboard h1 {
-  padding: 25px;
+.dashboard .space-between {
+  display: flex;
+  flex-direction: row;
   width: 100%;
+  justify-content: space-between;
+  padding: 14px 16px 0 16px;
+}
+.dashboard .space-between button {
+  margin-bottom: 16px;
 }
 .dashboard .calendar {
   display: flex;
@@ -48,7 +54,10 @@
   display: block;
   margin-top: 20px;
 }
-
+.dashboard .calendar .time {
+  margin-right: 8px;
+  font-weight: 700;
+}
 .dashboard .calendar .tempPreview {
   text-align: right;
   font-size: 14pt;
@@ -77,13 +86,30 @@
   background-color: red;
 }
 
-.dashboard .calendar a.blue {
+.dashboard .calendar button.blue {
   color: #0286FF;
   background-color: rgba(225, 235, 255, 1);
 }
 
-.dashboard .calendar a.blue:after {
+.dashboard .calendar button.blue:after {
   background-color:  #0286FF;
+}
+
+.dashboard .calendar button.green {
+  color: #00D163;
+  background: rgb(0,236,112, 0.25);
+}
+
+.dashboard .calendar button.green:after {
+  background-color: #00ec70;
+}
+.dashboard .calendar button.yellow {
+  color: #C7AA00 ;
+  background: rgba(236,202,0, 0.25);
+}
+
+.dashboard .calendar button.yellow:after {
+  background-color: #ECCA00 ;
 }
 
 @media (max-width: 768px) {
