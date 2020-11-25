@@ -22,8 +22,6 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
     setSelectedDate(selected);
   }, [day]);
 
-  localStorage.clear();
-
   const forecast = weather?.forecast?.forecastday[0];
   const currentWeather = weather?.current;
 
