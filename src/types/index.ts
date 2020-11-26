@@ -1,3 +1,5 @@
+import { type } from 'os';
+
 export type TButton = {
   onClick: () => void;
   children?: JSX.Element;
@@ -51,6 +53,14 @@ export type TReminderProps = {
   reminder: TReminder;
   onClick: () => void;
 };
+export type THourForecast = {
+  time: string;
+  temp_c: number;
+  condition: {
+    text: string;
+    icon: string;
+  };
+};
 export type TForecast = {
   date: string;
   day: {
@@ -61,6 +71,7 @@ export type TForecast = {
       icon: string;
     };
   };
+  hour: THourForecast[];
 };
 export type TWeather = {
   region: string;
