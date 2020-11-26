@@ -17,6 +17,20 @@ const Dashboard = ({ selectedDay }: TDashBoardProps): JSX.Element => {
     removeReminders,
   } = useContext(ReminderContext);
 
+  const compareDate = () => {
+    const d = new Date();
+    if (selectedDay) {
+      const currentDate = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      const reminderDate = new Date(
+        selectedDay.year,
+        selectedDay.month,
+        selectedDay.day,
+      );
+      if (+reminderDate < +currentDate) return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
     if (selectedDay) loadRemindersOfDay(selectedDay);
   }, [selectedDay, reminders]);
@@ -38,7 +52,7 @@ const Dashboard = ({ selectedDay }: TDashBoardProps): JSX.Element => {
               setSelectedReminder(undefined);
               setShowModal(true);
             }}
-            disabled={remindersOfDay.length >= 8}
+            disabled={remindersOfDay.length >= 8 || compareDate()}
           >
             <FiPlus size={16} color="#FFFFFF" />
           </CircularButton>
