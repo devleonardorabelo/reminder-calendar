@@ -51,6 +51,7 @@ export type TDashBoardProps = {
 };
 export type TReminderProps = {
   reminder: TReminder;
+  reminders: TReminder[];
   onClick: () => void;
 };
 export type THourForecast = {

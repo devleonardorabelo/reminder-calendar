@@ -50,6 +50,8 @@ const Dashboard = ({ selectedDay }: TDashBoardProps): JSX.Element => {
           <div className="col-12">
             {remindersOfDay.map((reminder) => (
               <Reminder
+                key={reminder.id}
+                reminders={reminders}
                 reminder={reminder}
                 onClick={() => {
                   setSelectedReminder(reminder);

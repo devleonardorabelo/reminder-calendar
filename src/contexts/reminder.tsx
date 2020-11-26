@@ -30,6 +30,7 @@ export const ReminderProvider: React.FC<TComponentProps> = ({
     reminders[index].title = item.title;
     reminders[index].hour = item.hour;
     reminders[index].color = item.color;
+    reminders[index].city = item.city;
     setReminders([...reminders]);
   };
 

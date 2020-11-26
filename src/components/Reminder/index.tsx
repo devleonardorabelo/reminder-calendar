@@ -3,7 +3,11 @@ import getWeather from '../../services/getWeather';
 import { THourForecast, TReminderProps } from '../../types';
 import './styles.css';
 
-const Reminder = ({ reminder, onClick }: TReminderProps): JSX.Element => {
+const Reminder = ({
+  reminder,
+  reminders,
+  onClick,
+}: TReminderProps): JSX.Element => {
   const [hourForecast, setHourForecast] = useState<THourForecast>();
 
   const date = `${reminder.date.year}-${reminder.date.month + 1}-${
@@ -27,7 +31,7 @@ const Reminder = ({ reminder, onClick }: TReminderProps): JSX.Element => {
 
   useEffect(() => {
     loadReminderWeather();
-  }, []);
+  }, [reminder, reminders]);
 
   return (
     <button
