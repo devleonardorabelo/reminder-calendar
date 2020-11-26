@@ -43,6 +43,11 @@
   outline: 0;
   border: 0;
 }
+.dashboard .calendar button.reminder .reminderBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .dashboard .calendar button.reminder span {
   font-weight: normal;
 }
@@ -58,9 +63,15 @@
   margin-right: 8px;
   font-weight: 700;
 }
+.dashboard .calendar .title {
+  font-weight: 700;
+  font-size: 14pt;
+  padding: 8px 0;
+}
 .dashboard .calendar .tempPreview {
   text-align: right;
   font-size: 14pt;
+  min-width: 150px;
 }
 .dashboard .calendar .maxMinTemp {
   display: block;

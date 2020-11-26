@@ -58,17 +58,25 @@ const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
                     setShowModal(true);
                   }}
                 >
-                  <span className="time">{item.hour}</span>
-                  {item.title}
-                  <div className="tempPreview">
-                    <span className="actualTemp">28º</span>
-                    <span className="image">
-                      <img
-                        src="//cdn.weatherapi.com/weather/64x64/night/113.png"
-                        alt=""
-                      />
-                    </span>
-                    <span className="maxMinTemp">min 16º / max 28º</span>
+                  <div className="reminderBody">
+                    <div>
+                      <span className="time">
+                        {`${item.hour} - ${item.city}`}
+                      </span>
+                      <div>
+                        <span className="title">{item.title}</span>
+                      </div>
+                    </div>
+                    <div className="tempPreview">
+                      <span className="actualTemp">28º</span>
+                      <span className="image">
+                        <img
+                          src="//cdn.weatherapi.com/weather/64x64/night/113.png"
+                          alt=""
+                        />
+                      </span>
+                      <span className="maxMinTemp">min 16º / max 28º</span>
+                    </div>
                   </div>
                 </button>
               );
