@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FiChevronRight, FiTrash } from 'react-icons/fi';
 import ReminderContext from '../../contexts/reminder';
-import { TModalProps, TReminder } from '../../types';
-import { CircularButton, RectangularButton } from '../Button';
+import { TModalProps } from '../../types';
 import './styles.css';
+import { CircularButton, RectangularButton } from '..';
 
 const Modal = ({
   reminder,
@@ -115,10 +115,10 @@ const Modal = ({
           <textarea
             value={title}
             name="title"
-            className="eventTitle"
+            className="reminderTitle"
             id="title"
             maxLength={30}
-            placeholder="Título do Evento"
+            placeholder="Título do Lembrete"
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>

@@ -14,7 +14,7 @@ const Calendar = ({
   }
 
   return (
-    <div className="col-12 calendar">
+    <div className="col-12">
       <h3>
         {selectedDay &&
           `${selectedDay.day} de ${getMonthName(selectedDay.month)} de ${
@@ -35,7 +35,7 @@ const Calendar = ({
             onClick={() => selectDay(item)}
             type="button"
             key={Math.random()}
-            className={item.day === selectedDay?.day ? 'active' : ''}
+            className={`${item.day === selectedDay?.day && 'active'}`}
           >
             {item.day}
           </button>

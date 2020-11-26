@@ -34,20 +34,12 @@
   max-width: 100%;
   overflow: initial;
 }
-.lateralModal.active .space-between {
+.lateralModal.active .contentModal .space-between {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.contentModal .eventTitle {
-  font-size: 20pt;
-  font-family: 'Roboto';
-  width: 100%;
-  border: 0px;
-  resize: none;
-  outline: none;
-}
-.contentModal .time {
+.lateralModal.active .contentModal .time {
   font-size: 20pt;
   width: 100%;
   border:0px;
@@ -55,25 +47,33 @@
   font-family: 'Roboto';
   outline: none;
 }
-.contentModal p {
-  font-size: 10pt;
-  color: #777;
-  margin: 0px;
-  padding: 0px;
-  margin-bottom: 5px;
+.lateralModal.active .contentModal .reminderTitle {
+  font-size: 20pt;
+  font-family: 'Roboto';
+  width: 100%;
+  border: 0px;
+  resize: none;
+  outline: none;
 }
-.contentModal label {
-  margin-bottom: 20px;
-  display: block;
-}
-.contentModal .city {
+.lateralModal.active .contentModal .city {
   font-size: 20pt;
   border: 0px;
   width: 100%;
   color: black;
   outline: none;
 }
-.contentModal button.color {
+.lateralModal.active .contentModal p {
+  font-size: 10pt;
+  color: #777;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+.lateralModal.active .contentModal label {
+  margin-bottom: 20px;
+  display: block;
+}
+.lateralModal.active .contentModal button.color {
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -82,23 +82,25 @@
   border: 2px solid transparent;
   transition: all 0.2s;
   outline: none;
+  color: transparent;
+  margin-right: 8px;
 }
-.contentModal button.color:hover {
+.lateralModal.active .contentModal button.color:hover {
   opacity: 1;
 }
-.contentModal button.color.red {
+.lateralModal.active .contentModal button.color.red {
   background-color: #FF0000;
 }
-.contentModal button.color.blue {
+.lateralModal.active .contentModal button.color.blue {
   background-color: #0286FF;
 }
-.contentModal button.color.green {
+.lateralModal.active .contentModal button.color.green {
   background-color: #00ec70;
 }
-.contentModal button.color.yellow {
+.lateralModal.active .contentModal button.color.yellow {
   background-color: #ecca00;
 }
-.contentModal button.color.active {
+.lateralModal.active .contentModal button.color.active {
   opacity: 1;
   border: 2px solid black;
   box-shadow: 0px 1px 7px -2px rgba(0,0,0,0.7);

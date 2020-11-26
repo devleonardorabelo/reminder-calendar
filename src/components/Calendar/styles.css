@@ -8,13 +8,11 @@
 .calendarDays div {
   width: 14.28%;
   color: #999;
-  padding: 5px 0px;
+  padding: 8px 0px;
 }
 .calendarDays button {
   border: 0;
   background-color: transparent;
-}
-.calendarDays button,.calendarDays>span {
   width: 14.28%;
   padding: 5px 0px;
   display: inline-block;

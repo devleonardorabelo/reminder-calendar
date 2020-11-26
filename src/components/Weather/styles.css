@@ -5,44 +5,39 @@
   flex-direction: column;
   justify-content: center;
 }
-.available {
+.weather .available {
   background-color: #66BFFF;
   padding: 15px;
   width: 100%;
   border-radius: 10px;
   min-height: 160px;
 }
-
-.unavailable {
+.weather .unavailable {
   background-color: #DA3E52;
   padding: 15px;
   width: 100%;
   border-radius: 10px;
   min-height: 160px;
 }
-
-.align-center {
+.weather .align-center {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-
-.temp {
+.weather .temp {
   font-size: 25pt;
   line-height: 30pt;
   color: white;
   font-weight: 200;
 }
-
-.text {
+.weather .text {
   font-size: 11pt;
   line-height: 11pt;
   color: rgba(255,255,255,0.8);
   font-weight: 200;
 }
-
-.maxMin {
+.weather .title {
   color: rgba(255,255,255,0.7);
   font-size: 14pt;
 }

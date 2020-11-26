@@ -25,13 +25,13 @@
       "prettier"
   ],
   "rules": {
+    "react-hooks/exhaustive-deps": "off",
     "camelcase": "off",
     "no-use-before-define":"off",
     "import/no-extraneous-dependencies": ["error",  {"devDependencies": true}],
     "react/jsx-props-no-spreading": "off",
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
     "import/extensions": [

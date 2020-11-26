@@ -22,16 +22,10 @@
   flex-flow: row wrap;
   flex-direction: row;
 }
-.dashboard .calendar h3 {
-  margin: 0px;
-  padding: 0px;
-  color: black;
-}
 .dashboard .calendar>div {
   padding: 10px;
   border-bottom: 1px solid #EEE;
 }
-
 .dashboard .calendar .calendarFooter {
   display: flex;
   justify-content: flex-end;

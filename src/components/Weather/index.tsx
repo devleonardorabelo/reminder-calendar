@@ -35,7 +35,7 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
     return (
       <div className="weather">
         <div className="available align-center">
-          <span className="maxMin">Adicione uma cidade</span>
+          <span className="title">Adicione uma cidade</span>
         </div>
       </div>
     );
@@ -62,7 +62,7 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
       {+currentDate < +selectedDate && forecast && (
         <div className="available">
           <img src={forecast.day.condition.icon} alt="" />
-          <div className="maxMin">
+          <div className="title">
             {`${forecast.day.maxtemp_c} / ${forecast.day.mintemp_c}°C`}
           </div>
           <span className="text">{forecast.day.condition.text}</span>
@@ -70,17 +70,17 @@ const Weather = ({ weather, day, loading }: TWeatherProps): JSX.Element => {
       )}
       {+currentDate > +selectedDate && currentWeather && (
         <div className="unavailable align-center">
-          <span className="maxMin">Esse dia já passou</span>
+          <span className="title">Esse dia já passou</span>
         </div>
       )}
       {+currentDate < +selectedDate && !forecast && currentWeather && (
         <div className="unavailable align-center">
-          <span className="maxMin">Previsão Indisponível</span>
+          <span className="title">Previsão Indisponível</span>
         </div>
       )}
       {!currentWeather && (
         <div className="available align-center">
-          <span className="maxMin">Cidade não encontrada</span>
+          <span className="title">Cidade não encontrada</span>
         </div>
       )}
     </div>

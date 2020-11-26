@@ -37,12 +37,12 @@ const Reminder = ({
     <button
       key={reminder.id}
       type="button"
-      className={`${reminder.color} reminder`}
+      className={`reminder ${reminder.color}`}
       onClick={onClick}
     >
       <div className="reminderBody">
         <div>
-          <span className="time">{`${reminder.hour} - ${reminder.city}`}</span>
+          <p className="time">{`${reminder.hour} - ${reminder.city}`}</p>
           <div>
             <span className="title">{reminder.title}</span>
           </div>
@@ -51,7 +51,7 @@ const Reminder = ({
           <div className="tempPreview">
             <div className="forecastInfo">
               <p className="actualTemp">{`${hourForecast.temp_c}°`}</p>
-              <p className="maxMinTemp">{hourForecast.condition.text}</p>
+              <p className="condition">{hourForecast.condition.text}</p>
             </div>
             <div className="image">
               <img className="image" src={hourForecast.condition.icon} alt="" />

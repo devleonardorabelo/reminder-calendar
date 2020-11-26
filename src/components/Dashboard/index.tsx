@@ -3,10 +3,8 @@ import { FiPlus, FiTrash } from 'react-icons/fi';
 import ReminderContext from '../../contexts/reminder';
 import { TReminder, TDashBoardProps } from '../../types';
 import getMonthName from '../../utils/setNameMonth';
-import { CircularButton } from '../Button';
-import Modal from '../Modal';
-import Reminder from '../Reminder';
 import './styles.css';
+import { CircularButton, Reminder, Modal } from '..';
 
 const Dashboard = ({ selectedDay }: TDashBoardProps): JSX.Element => {
   const [selectedReminder, setSelectedReminder] = useState<TReminder>();
