@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+<h2 align="center">Calendário com lembrete e clima</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+Este é um calendário de lembretes onde o usuário pode adicionar suas tarefas diárias de acordo com a hora especifica. Para cada dia há uma previsão de tempo e para cada evento futuro também é previsto o clima baseado na hora do lembrete. 
 
-In the project directory, you can run:
+#### Projeto
 
-### `yarn start`
+Este projeto foi criado utilizando Typescript, React JS, ContextAPI para tratamento de estados e biblioteca adicional de icone, o react-icons.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Instalação
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Pré-instalação 
 
-### `yarn test`
+Clone o repositório na pasta desejada:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    git clone https://github.com/devleonardorabelo/reminder-calendar.git
 
-### `yarn build`
+É necessário a instalação das dependências, então rode o seguinte comando:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    yarn || yarn install
+    
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Variáveis de Ambiente
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<ul>
+  <li>Acesse a WeatherAPI (https://www.weatherapi.com) e crie uma conta.</li>
+  <li>No painel principal, copiar a API Key./li>
+  <li>Crie um arquivo ".env" no root do projeto e inserir para a variavel REACT_APP_API_KEY</li>
+  <li>Inserir para a variavel REACT_APP_API_KEY o valor "http://api.weatherapi.com/v1/forecast.json"
+</ul>
 
-### `yarn eject`
+Modelo exemplo:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    REACT_APP_API_KEY = a1443a284901119819845706202411
+    REACT_APP_API_URL = http://api.weatherapi.com/v1/forecast.json
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    
+### Iniciar
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Para iniciar, rodar o comando:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+    yarn start
