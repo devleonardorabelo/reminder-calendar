@@ -25,7 +25,7 @@ Clone o repositório na pasta desejada:
 
 <ul>
   <li>Acesse a WeatherAPI (https://www.weatherapi.com) e crie uma conta.</li>
-  <li>No painel principal, copiar a API Key./li>
+  <li>No painel principal, copiar a API Key.</li>
   <li>Crie um arquivo ".env" no root do projeto e inserir para a variavel REACT_APP_API_KEY</li>
   <li>Inserir para a variavel REACT_APP_API_KEY o valor "http://api.weatherapi.com/v1/forecast.json"
 </ul>
