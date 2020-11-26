@@ -73,8 +73,10 @@ const Modal = ({
       setTitle(reminder.title);
       setCity(reminder.city);
       setColor(reminder.color);
+    } else {
+      resetForm();
     }
-  }, [reminder]);
+  }, [reminder, show]);
 
   useEffect(() => {
     if (hour.length === 5 && city.length >= 3 && title.length > 5)
