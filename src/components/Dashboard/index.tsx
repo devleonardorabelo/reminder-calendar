@@ -66,8 +66,10 @@ const Dashboard = ({ selectedDay }: TDashBoardProps): JSX.Element => {
                 reminders={reminders}
                 reminder={reminder}
                 onClick={() => {
-                  setSelectedReminder(reminder);
-                  setShowModal(true);
+                  if (!compareDate()) {
+                    setSelectedReminder(reminder);
+                    setShowModal(true);
+                  }
                 }}
               />
             ))}
