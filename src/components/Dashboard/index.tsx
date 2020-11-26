@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FiPlus, FiTrash } from 'react-icons/fi';
 import ReminderContext from '../../contexts/reminder';
-import { TReminder, TReminderProps } from '../../types';
+import { TReminder, TDashBoardProps } from '../../types';
 import getMonthName from '../../utils/setNameMonth';
 import { CircularButton } from '../Button';
 import Modal from '../Modal';
+import Reminder from '../Reminder';
 import './styles.css';
 
-const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
+const Dashboard = ({ selectedDay }: TDashBoardProps): JSX.Element => {
   const [selectedReminder, setSelectedReminder] = useState<TReminder>();
 
   const [showModal, setShowModal] = useState(false);
@@ -47,40 +48,15 @@ const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
 
         <div className="calendar">
           <div className="col-12">
-            {remindersOfDay.map((item) => {
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  className={`${item.color} reminder`}
-                  onClick={() => {
-                    setSelectedReminder(item);
-                    setShowModal(true);
-                  }}
-                >
-                  <div className="reminderBody">
-                    <div>
-                      <span className="time">
-                        {`${item.hour} - ${item.city}`}
-                      </span>
-                      <div>
-                        <span className="title">{item.title}</span>
-                      </div>
-                    </div>
-                    <div className="tempPreview">
-                      <span className="actualTemp">28º</span>
-                      <span className="image">
-                        <img
-                          src="//cdn.weatherapi.com/weather/64x64/night/113.png"
-                          alt=""
-                        />
-                      </span>
-                      <span className="maxMinTemp">min 16º / max 28º</span>
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
+            {remindersOfDay.map((reminder) => (
+              <Reminder
+                reminder={reminder}
+                onClick={() => {
+                  setSelectedReminder(reminder);
+                  setShowModal(true);
+                }}
+              />
+            ))}
             <div className="calendarFooter">
               <div>
                 <span>

@@ -44,8 +44,12 @@ export type TReminderContext = {
   removeReminders: (selectedReminders: TReminder[]) => void;
   loadRemindersOfDay: (day: TDateFormat) => void;
 };
-export type TReminderProps = {
+export type TDashBoardProps = {
   selectedDay: TDateFormat | undefined;
+};
+export type TReminderProps = {
+  reminder: TReminder;
+  onClick: () => void;
 };
 export type TForecast = {
   date: string;
