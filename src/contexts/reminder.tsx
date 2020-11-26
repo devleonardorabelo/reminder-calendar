@@ -13,6 +13,7 @@ const ReminderContext = createContext<TReminderContext>({
   addReminder: () => null,
   editReminder: () => null,
   removeReminder: () => null,
+  removeReminders: () => null,
   loadRemindersOfDay: () => null,
 });
 
@@ -35,6 +36,14 @@ export const ReminderProvider: React.FC<TComponentProps> = ({
   const removeReminder = (item: TReminder) => {
     const index = reminders.findIndex((each) => each.id === item.id);
     reminders.splice(index, 1);
+    setReminders([...reminders]);
+  };
+
+  const removeReminders = (selectedReminders: TReminder[]) => {
+    selectedReminders.forEach((reminder) => {
+      const index = reminders.findIndex((each) => each.id === reminder.id);
+      reminders.splice(index, 1);
+    });
     setReminders([...reminders]);
   };
 
@@ -69,6 +78,7 @@ export const ReminderProvider: React.FC<TComponentProps> = ({
         addReminder,
         editReminder,
         removeReminder,
+        removeReminders,
         loadRemindersOfDay,
       }}
     >

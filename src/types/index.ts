@@ -41,6 +41,7 @@ export type TReminderContext = {
   addReminder: (item: TReminder) => void;
   editReminder: (item: TReminder) => void;
   removeReminder: (item: TReminder) => void;
+  removeReminders: (selectedReminders: TReminder[]) => void;
   loadRemindersOfDay: (day: TDateFormat) => void;
 };
 export type TReminderProps = {

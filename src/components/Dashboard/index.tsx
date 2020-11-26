@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiTrash } from 'react-icons/fi';
 import ReminderContext from '../../contexts/reminder';
 import { TReminder, TReminderProps } from '../../types';
 import getMonthName from '../../utils/setNameMonth';
@@ -11,9 +11,12 @@ const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
   const [selectedReminder, setSelectedReminder] = useState<TReminder>();
 
   const [showModal, setShowModal] = useState(false);
-  const { remindersOfDay, reminders, loadRemindersOfDay } = useContext(
-    ReminderContext,
-  );
+  const {
+    remindersOfDay,
+    reminders,
+    loadRemindersOfDay,
+    removeReminders,
+  } = useContext(ReminderContext);
 
   useEffect(() => {
     if (selectedDay) loadRemindersOfDay(selectedDay);
@@ -49,7 +52,7 @@ const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
                 <button
                   key={item.id}
                   type="button"
-                  className={item.color}
+                  className={`${item.color} reminder`}
                   onClick={() => {
                     setSelectedReminder(item);
                     setShowModal(true);
@@ -71,10 +74,18 @@ const Dashboard = ({ selectedDay }: TReminderProps): JSX.Element => {
               );
             })}
             <div className="calendarFooter">
-              <span>
-                Lembretes restantes:
-                <strong>{`  ${8 - remindersOfDay.length}`}</strong>
-              </span>
+              <div>
+                <span>
+                  Lembretes restantes:
+                  <strong>{`  ${8 - remindersOfDay.length}`}</strong>
+                </span>
+              </div>
+              <CircularButton
+                onClick={() => removeReminders(remindersOfDay)}
+                transparent
+              >
+                <FiTrash size={16} color="#777" />
+              </CircularButton>
             </div>
           </div>
         </div>
